@@ -9,7 +9,7 @@
 body {
    min-height: 70vh;
    margin: 0;
-   font-family: 'Roboto'; /*явная проблема с шрифтом*/
+   font-family: 'Roboto'; 
 }
 main {
     min-height: inherit;
@@ -113,7 +113,7 @@ button.deleteCheck:hover {
 .buttonADD:hover {
     background: #9953F1;
 }
-.buttunPlus:hover {
+.buttonADD:hover .buttunPlus {
 
     background: #AA68FE ;
 }
@@ -130,6 +130,7 @@ button.deleteCheck:hover {
     align-items: center;
 }
 .buttonText {
+    
     
     display: flex;
     justify-content: center;

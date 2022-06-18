@@ -1,12 +1,13 @@
 
 class ToDolist {
     constructor () {
+        this.newArrCheckList = [];
         this.addBtn = document.querySelector('.buttonADD');
         this.checkList = document.querySelector('.checkList');
-
+        this.filterBtn = document.querySelector('.filtersADD')
     }
 
-    creatListElementDelBtl (elementToRemove){
+    creatListElementDelBtl = (elementToRemove) => {
         let newButDel = document.createElement('button');
         newButDel.classList.add('deleteCheck');
         newButDel.addEventListener('click', ()=>{
@@ -16,7 +17,7 @@ class ToDolist {
 
     }
 
-    creatListElement () {
+    creatListElement = () => {
         let newDiv = document.createElement('div');
         newDiv.classList.add('checkBox');
         newDiv.innerHTML = `
@@ -28,10 +29,25 @@ class ToDolist {
         this.checkList.append(newDiv);
     }
 
+    creatListElementNewArr = () => {
+
+        let listInput = document.querySelectorAll('.addText');
+        listInput.forEach(el => {
+            this.newArrCheckList.push(el.value)
+        });
+        console.log(this.newArrCheckList); //убрать потом не забудь
+
+    }
+    creatListElementFilterABC = (newArr) => {
+
+    }
+
+
     init (){
         
         this.addBtn.addEventListener('click', this.creatListElement);
         //2.фильтр
+        this.filterBtn.addEventListener('click', this.creatListElementNewArr);///понять функцию не забудь
     }
 }
  
