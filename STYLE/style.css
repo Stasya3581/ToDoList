@@ -1,5 +1,5 @@
-@import '/STYLE/fonts.css';
-@import '/STYLE/normalize.css';
+/* @import '/STYLE/fonts.css';
+@import '/STYLE/normalize.css'; */
 * {
     margin: 0px;
     padding: 0px;
@@ -58,15 +58,19 @@ button.filtersADD {
     border: none;
 }
 
-
-.checkBox{
+.checkList {
     border: 1px solid #C4C4C4;
     border-radius: 10px;
+}
+
+.checkBox{
+    
     min-width: 280px;
     min-height: 35px;
     display: flex;
     align-items: center;
     justify-content: space-around;
+   
 }
 input.addText {
     outline: none;
@@ -76,20 +80,26 @@ input.addText {
 
 }
 button.deleteCheck {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     background:url(/IMG/Group\ 56.svg) center center / contain no-repeat ; 
-    border: 0;
+    border: none;
+
+}
+
+button.deleteCheck:hover {
+    background:url(/IMG/Group\ 70.svg) center center / contain no-repeat ; 
+
 }
 
 
-
 .buttonADD {
-    
+    /* display: inline-block; */
     margin: 20px auto;
     width: 150px;
+    height: 42px;
     display: flex;
-    justify-content: center; 
+    justify-content: flex-end; 
     align-items: center;
     background: #833AE0;
     border-radius: 70px;
@@ -97,8 +107,17 @@ button.deleteCheck {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-
+    border: #833AE0;
+    flex-direction: row-reverse;
 }
+.buttonADD:hover {
+    background: #9953F1;
+}
+.buttunPlus:hover {
+
+    background: #AA68FE ;
+}
+
 
 .buttunPlus{
     width: 42px;
