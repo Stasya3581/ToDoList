@@ -1,5 +1,5 @@
-/* @import '/STYLE/fonts.css';
-@import '/STYLE/normalize.css'; */
+@import url(fonts.css);
+@import url(normalize.css);
 * {
     margin: 0px;
     padding: 0px;
