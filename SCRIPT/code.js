@@ -5,6 +5,8 @@ class ToDolist {
         this.addBtn = document.querySelector('.buttonADD');
         this.checkList = document.querySelector('.checkList');
         this.filterBtn = document.querySelector('.filtersADD')
+        this.arrFilterABC;
+        this.arrFilterCBA;
     }
 
     creatListElementDelBtl = (elementToRemove) => {
@@ -29,17 +31,33 @@ class ToDolist {
         this.checkList.append(newDiv);
     }
 
-    creatListElementNewArr = () => {
-
-        let listInput = document.querySelectorAll('.addText');
-        listInput.forEach(el => {
-            this.newArrCheckList.push(el.value)
-        });
-        console.log(this.newArrCheckList); //убрать потом не забудь
+    FilterClickuttun  = () => {
+        ///делаем условия на на клики сортировки по алфавиту и против
+        
 
     }
-    creatListElementFilterABC = (newArr) => {
+    creatListElementNewArr = () => {
+        ///отсортировали по алфавиту
+        let listInput = document.querySelectorAll('.addText');
 
+        listInput.forEach(el => {
+            //вписать сортировку в обратном порядки при повторном нажатии
+            this.newArrCheckList.push(el.value)
+        });
+
+        this.arrFilterABC = this.newArrCheckList.sort(); ///сортируем по алфавиту
+        
+        this.arrFilterCBA = [...this.newArrCheckList.sort()].reverse(); //сортируем в обратку
+
+        /// вставить метод creatListElementFilterABC (удалить старый массив добавить новый)
+        console.log(this.arrFilterCBA, this.arrFilterABC); //убрать потом не забудь
+
+    }
+    creatListElementFilterABC = () => {
+            //1.удаляем старый масив
+          
+            
+            //2.пушим новый отсартированый
     }
 
 
