@@ -1,18 +1,23 @@
 
 class ToDolist {
-    constructor () {
-        this.newArrCheckList = [];
+    constructor() {
+
         this.addBtn = document.querySelector('.buttonADD');
         this.checkList = document.querySelector('.checkList');
         this.filterBtn = document.querySelector('.filtersADD')
         this.arrFilterABC;
         this.arrFilterCBA;
+        this.sortABC = 'asc';
+        this.sortCBA = 'desc';
+        this.sortDirect = this.sortCBA;
+
+
     }
 
     creatListElementDelBtl = (elementToRemove) => {
         let newButDel = document.createElement('button');
         newButDel.classList.add('deleteCheck');
-        newButDel.addEventListener('click', ()=>{
+        newButDel.addEventListener('click', () => {
             elementToRemove.remove();
         })
         return newButDel;
@@ -31,69 +36,87 @@ class ToDolist {
         this.checkList.append(newDiv);
     }
 
-    FilterClickuttun  = () => {
-        ///делаем условия на на клики сортировки по алфавиту и против
-        
 
-    }
     creatListElementNewArr = () => {
-        ///отсортировали по алфавиту
+        let newArrCheckList = [];
         let listInput = document.querySelectorAll('.addText');
 
         listInput.forEach(el => {
-            //вписать сортировку в обратном порядки при повторном нажатии
-            this.newArrCheckList.push(el.value)
+            newArrCheckList.push(el.value)
+
+
         });
-
-        this.arrFilterABC = this.newArrCheckList.sort(); ///сортируем по алфавиту
         
-        this.arrFilterCBA = [...this.newArrCheckList.sort()].reverse(); //сортируем в обратку
 
-        /// вставить метод creatListElementFilterABC (удалить старый массив добавить новый)
-        console.log(this.arrFilterCBA, this.arrFilterABC); //убрать потом не забудь
+
+        if (this.sortDirect === this.sortCBA) {
+            this.sortDirect = this.sortABC;
+
+            newArrCheckList.sort();
+
+            for (let i = 0; i <= listInput.length-1; i++) {
+                listInput[i].value = newArrCheckList[i];
+
+            }
+        console.log(newArrCheckList)
+        }
+
+
+        else {
+            this.sortDirect = this.sortCBA;
+            let newArrCheckListRevers = [...newArrCheckList.sort()].reverse();
+
+            for (let i = 0; i <= listInput.length-1; i++) {
+
+                listInput[i].value = newArrCheckListRevers[i];
+            }
+            console.log(newArrCheckListRevers)
+        }
+        
+    }
+
+    MouseEventFilter = () => {
+
+
+        this.filterBtn.addEventListener('click', this.creatListElementNewArr);
+
+        this.filterBtn.addEventListener('mouseover', (event) => {
+
+            if (this.sortDirect === this.sortCBA) {
+                this.sortDirect = this.sortABC;
+                event.target.src = `/IMG/dowhActive.svg`;
+            }
+            else {
+                
+                event.target.src = `/IMG/UpdActive.svg`;
+            }
+                                                            
+        })
+
+        this.filterBtn.addEventListener('mouseout', (event) => {
+            if (this.sortDirect === this.sortCBA) {
+                event.target.src = `/IMG/UpdPassive.svg`;
+            }
+            else {
+               
+
+                event.target.src = `/IMG/dowhPassive.svg`;
+            }
+
+        })
 
     }
-    creatListElementFilterABC = () => {
-            //1.удаляем старый масив
-          
-            
-            //2.пушим новый отсартированый
-    }
 
 
-    init (){
-        
+    init() {
+
         this.addBtn.addEventListener('click', this.creatListElement);
-        //2.фильтр
-        this.filterBtn.addEventListener('click', this.creatListElementNewArr);///понять функцию не забудь
+        this.MouseEventFilter()
     }
+
 }
- 
+
 let list = new ToDolist()
 list.init();
 
-
-
-// let checkList = document.querySelector('.checkList');
-
-
-// function checkListAdd (){
-//     let newDiv = document.createElement('div');
-//     newDiv.classList.add('checkBox');
-//     newDiv.innerHTML = `
-//         <input type="text" class="addText">`;
-
-//     let newButDel = document.createElement('button');
-//     newButDel.classList.add('deleteCheck')
-//     newButDel.addEventListener('click',  () =>{
-//         newDiv.remove();
-//     });
-//     newDiv.append(newButDel);
-//     checkList.append(newDiv);
-
-//     }
-
-
-// let addBut = document.querySelector('.buttonADD');
-// addBut.addEventListener( 'click', checkListAdd)
 
